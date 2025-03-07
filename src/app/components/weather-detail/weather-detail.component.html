@@ -1,0 +1,42 @@
+<div class="row gy-3" *ngIf="detail">
+    <!-- 1) Time -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="card p-3 text-center shadow-sm">
+        <div class="fw-semibold">Time</div>
+        <div class="fs-5">{{ detail.time }}</div>
+      </div>
+    </div>
+  
+    <!-- 2) Temperature -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="card p-3 text-center shadow-sm">
+        <div class="fw-semibold">Temperature</div>
+        <div class="fs-5">{{ detail.temperature }}°C</div>
+      </div>
+    </div>
+  
+    <!-- 3) Wind Speed -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="card p-3 text-center shadow-sm">
+        <div class="fw-semibold">Wind Speed</div>
+        <div class="fs-5">{{ detail.windspeed }} m/s</div>
+      </div>
+    </div>
+  
+    <!-- 4) Wind Direction -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="card p-3 text-center shadow-sm">
+        <div class="fw-semibold">Wind Direction</div>
+        <div class="fs-5">{{ detail.winddirection }}°</div>
+      </div>
+    </div>
+  
+    <!-- 5) Interval -->
+    <div class="col-12 col-md-6 col-lg-2">
+      <div class="card p-3 text-center shadow-sm">
+        <div class="fw-semibold">Interval</div>
+        <div class="fs-5">{{ detail.interval }}s</div>
+      </div>
+    </div>
+  </div>
+  

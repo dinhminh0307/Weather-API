@@ -1,5 +1,10 @@
 <div class="container">
-    <!-- You can use the searchQuery here or pass it to further child components -->
-    <app-current-weather [searchQuery]="searchQuery"></app-current-weather>
+    <!-- Pass searchQuery to CurrentWeather for main display -->
+    <app-current-weather [searchQuery]="searchQuery" (weatherDetailEvent)="handleWeatherDetail($event)"></app-current-weather>
+    
+    <!-- Add a gap before the weather detail section -->
+    <div class="mt-4">
+      <app-weather-detail [detail]="weatherDetailData"></app-weather-detail>
+    </div>
   </div>
   
