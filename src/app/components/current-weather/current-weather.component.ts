@@ -1,15 +1,17 @@
-// src/app/components/current-weather/current-weather.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { CurrentWeather } from '../../models/current-weather.model';
 import { WeatherService } from '../../services/current-weather.service';
 import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-current-weather',
-  imports:[NgIf],
+  imports: [NgIf],
   templateUrl: './current-weather.component.html',
   styleUrls: ['./current-weather.component.css']
 })
-export class CurrentWeatherComponent implements OnInit {
+export class CurrentWeatherComponent implements OnInit, OnChanges {
+  @Input() searchQuery: string = 'Hanoi';  // Default city if no value is provided
+
   currentWeather!: CurrentWeather;
   loading = false;
   error = '';
@@ -20,8 +22,14 @@ export class CurrentWeatherComponent implements OnInit {
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
-    this.fetchWeather('Hanoi'); // Replace with desired city
-    console.log('CurrentWeatherComponent initialized');
+    this.fetchWeather(this.searchQuery);
+    console.log('CurrentWeatherComponent initialized with searchQuery:', this.searchQuery);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchQuery'] && !changes['searchQuery'].isFirstChange()) {
+      this.fetchWeather(this.searchQuery);
+    }
   }
 
   fetchWeather(city: string): void {

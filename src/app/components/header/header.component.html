@@ -35,8 +35,10 @@
         <!-- Center: Search box (with gear icon at the right) -->
         <form
           class="d-flex mx-auto my-2 my-lg-0 align-items-center"
-          (submit)="onSearch(searchInput.value)"
+          (submit)="$event.preventDefault(); 
+          onSearch(searchInput.value)"
         >
+        <button type="submit">Search</button>
           <div class="input-group">
             <!-- Optional: search icon in front -->
             <span class="input-group-text bg-light border-0" id="searchIcon">

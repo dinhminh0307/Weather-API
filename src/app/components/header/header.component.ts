@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'] // optional custom CSS
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   currentTheme = 'Light';
@@ -11,13 +12,14 @@ export class HeaderComponent {
   profileName = 'Wow Rakibul';
   avatarUrl = 'assets/avatar.png';
 
+  @Output() searchEvent = new EventEmitter<string>();
+
   onMenuClick() {
     console.log('Menu clicked');
   }
 
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'Light' ? 'Dark' : 'Light';
-    // add your logic to switch themes
   }
 
   onNotificationsClick() {
@@ -30,5 +32,6 @@ export class HeaderComponent {
 
   onSearch(value: string) {
     console.log('Searching for:', value);
+    this.searchEvent.emit(value);
   }
 }

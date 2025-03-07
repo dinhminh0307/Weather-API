@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-current-weather></app-current-weather>
+<app-header (searchEvent)="handleSearch($event)"></app-header>
+<app-home [searchQuery]="searchQuery"></app-home>

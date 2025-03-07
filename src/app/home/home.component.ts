@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CurrentWeatherComponent } from '../components/current-weather/current-weather.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true, // <-- Add this line
+  imports: [CurrentWeatherComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  @Input() searchQuery!: string;
 }
