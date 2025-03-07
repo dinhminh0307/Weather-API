@@ -2,10 +2,33 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css'] // optional custom CSS
 })
 export class HeaderComponent {
+  currentTheme = 'Light';
+  location = 'Khulna, Bangladesh';
+  profileName = 'Wow Rakibul';
+  avatarUrl = 'assets/avatar.png';
 
+  onMenuClick() {
+    console.log('Menu clicked');
+  }
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'Light' ? 'Dark' : 'Light';
+    // add your logic to switch themes
+  }
+
+  onNotificationsClick() {
+    console.log('Notifications clicked');
+  }
+
+  onSettingsClick() {
+    console.log('Settings clicked');
+  }
+
+  onSearch(value: string) {
+    console.log('Searching for:', value);
+  }
 }

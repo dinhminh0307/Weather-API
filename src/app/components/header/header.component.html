@@ -1,1 +1,128 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg border-bottom bg-white">
+    <div class="container-fluid align-items-center">
+  
+      <!-- Left: Menu + Brand + Location -->
+      <div class="d-flex align-items-center">
+        <!-- Hamburger Menu Button -->
+        <button
+          class="btn btn-link p-0 me-3 d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          (click)="onMenuClick()"
+        >
+          <i class="bi bi-list fs-4"></i>  <!-- “List” icon from Bootstrap Icons -->
+        </button>
+  
+        <!-- Brand / Logo text -->
+        <a class="navbar-brand fw-bold text-primary me-3 mb-0" href="#">
+          SkyCast
+        </a>
+  
+        <!-- Location -->
+        <div class="d-none d-md-flex align-items-center text-muted">
+          <i class="bi bi-geo-alt-fill me-1"></i>
+          <span>{{ location }}</span>
+        </div>
+      </div>
+  
+      <!-- Center + Right toggles collapse on small screens -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+        <!-- Center: Search box (with gear icon at the right) -->
+        <form
+          class="d-flex mx-auto my-2 my-lg-0 align-items-center"
+          (submit)="onSearch(searchInput.value)"
+        >
+          <div class="input-group">
+            <!-- Optional: search icon in front -->
+            <span class="input-group-text bg-light border-0" id="searchIcon">
+              <i class="bi bi-search"></i>
+            </span>
+            <input
+              #searchInput
+              type="search"
+              class="form-control border-start-0 border-end-0"
+              placeholder="Search Location"
+              aria-label="Search"
+            />
+            <!-- Gear icon on the right side of the search bar -->
+            <button
+              class="btn btn-light border-0"
+              type="button"
+              (click)="onSettingsClick()"
+            >
+              <i class="bi bi-gear"></i>
+            </button>
+          </div>
+        </form>
+  
+        <!-- Right side items -->
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+  
+          <!-- Theme Toggle -->
+          <li class="nav-item me-2">
+            <button
+              class="btn btn-outline-dark"
+              (click)="toggleTheme()"
+            >
+              <i class="bi bi-brightness-high me-1"></i> {{ currentTheme }}
+            </button>
+          </li>
+  
+          <!-- Notifications Icon -->
+          <li class="nav-item me-2">
+            <button
+              class="btn btn-outline-dark"
+              (click)="onNotificationsClick()"
+            >
+              <i class="bi bi-bell"></i>
+            </button>
+          </li>
+  
+          <!-- Settings Icon (If you want a separate button) -->
+          <!-- Omit if you prefer the gear icon only in the search box -->
+          <!--
+          <li class="nav-item me-2">
+            <button
+              class="btn btn-outline-dark"
+              (click)="onSettingsClick()"
+            >
+              <i class="bi bi-gear"></i>
+            </button>
+          </li>
+          -->
+  
+          <!-- Profile dropdown or static info -->
+          <li class="nav-item dropdown d-flex align-items-center">
+            <a
+              class="nav-link dropdown-toggle d-flex align-items-center"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <!-- Avatar -->
+              <img
+                [src]="avatarUrl"
+                alt="User Avatar"
+                class="rounded-circle me-2"
+                style="width: 32px; height: 32px; object-fit: cover;"
+              />
+              <span>{{ profileName }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </nav>
