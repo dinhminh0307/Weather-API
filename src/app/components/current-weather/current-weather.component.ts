@@ -81,8 +81,21 @@ export class CurrentWeatherComponent implements OnInit, OnChanges {
   }
 
   toggleTemperatureUnit(): void {
-    this.temperatureUnit =
-      this.temperatureUnit === 'Fahrenheit' ? 'Celsius' : 'Fahrenheit';
-    // In a real scenario, you would convert temperature values accordingly.
+    if (this.temperatureUnit === 'Fahrenheit') {
+      // Convert Fahrenheit to Celsius
+      this.currentWeather.temperature = +(((this.currentWeather.temperature - 32) * 5 / 9).toFixed(1));
+      this.currentWeather.feelsLike = +(((this.currentWeather.feelsLike - 32) * 5 / 9).toFixed(1));
+      // Update detail as well, if needed
+      this.weatherDetail.temperature = +(((this.weatherDetail.temperature - 32) * 5 / 9).toFixed(1));
+      this.temperatureUnit = 'Celsius';
+    } else {
+      // Convert Celsius to Fahrenheit
+      this.currentWeather.temperature = +((this.currentWeather.temperature * 9 / 5 + 32).toFixed(1));
+      this.currentWeather.feelsLike = +((this.currentWeather.feelsLike * 9 / 5 + 32).toFixed(1));
+      // Update detail as well
+      this.weatherDetail.temperature = +((this.weatherDetail.temperature * 9 / 5 + 32).toFixed(1));
+      this.temperatureUnit = 'Fahrenheit';
+    }
   }
+  
 }
