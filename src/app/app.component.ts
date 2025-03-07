@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
+import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     RouterOutlet,
     // DevExtreme modules
-    HeaderComponent
+    HeaderComponent,
+    CurrentWeatherComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
