@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 
 import { CurrentWeather } from '../../models/current-weather.model';
 import { WeatherDetail } from '../../models/weather-detail.model';
@@ -8,13 +8,17 @@ import { WeatherService } from '../../services/current-weather.service';
 @Component({
   selector: 'app-current-weather',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgClass],
   templateUrl: './current-weather.component.html',
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent implements OnInit, OnChanges {
   @Input() searchQuery: string = 'Hanoi';  // Default city if no value is provided
   @Output() weatherDetailEvent = new EventEmitter<WeatherDetail>();
+  
+  // We'll maintain a local theme property (default to 'Light') even if an external Input is provided.
+  // If you wish to control it only via Input, you can remove this local variable.
+  @Input() theme: string = 'Light';
 
   // Encapsulated private properties
   private _currentWeather!: CurrentWeather;
@@ -97,5 +101,5 @@ export class CurrentWeatherComponent implements OnInit, OnChanges {
       this.temperatureUnit = 'Fahrenheit';
     }
   }
-  
+
 }

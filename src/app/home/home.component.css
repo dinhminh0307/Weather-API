@@ -1,0 +1,14 @@
+/* home.component.css */
+.dark-mode {
+    background-color: #1a1a1a;
+    color: white !important;
+  }
+  
+  .light-mode {
+    background-color: #f8f9fa;
+    color: black !important;
+  }
+  
+  .min-vh-100 {
+    min-height: 100vh;
+  }

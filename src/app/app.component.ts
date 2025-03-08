@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 })
 export class AppComponent {
   title = 'weather-api';
+  theme: string = 'Light';
 
   // Default search query (e.g., initial city)
   searchQuery: string = 'Hanoi';
@@ -28,5 +29,10 @@ export class AppComponent {
     // Update the search query to be passed down to CurrentWeather
     this.searchQuery = query;
     console.log(this.searchQuery);
+  }
+
+  handleTheme(theme: string): void {
+    console.log('Theme toggled to:', theme);
+    this.theme = theme;
   }
 }

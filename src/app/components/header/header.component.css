@@ -1,0 +1,47 @@
+/* header.component.css */
+.dark-mode {
+    background-color: #2d2d2d !important;
+    color: white !important; /* White text for dark mode */
+    border-bottom-color: #404040 !important;
+  }
+  
+  .dark-mode .navbar-brand,
+  .dark-mode .text-muted,
+  .dark-mode .btn-outline-secondary {
+    color: white !important;
+  }
+  
+  .light-mode {
+    background-color: #ffffff !important;
+    color: black !important; /* Black text for light mode */
+  }
+  
+  /* Specific element overrides */
+  .dark-mode .btn-outline-secondary {
+    border-color: white;
+    color: white !important;
+  }
+  
+  .dark-mode .btn-outline-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Dropdown menu styling */
+  .dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: #404040;
+  }
+  
+  .dark-mode .dropdown-item {
+    color: white !important;
+  }
+  
+  .dark-mode .dropdown-item:hover {
+    background-color: #404040;
+  }
+  
+  /* Transition effects */
+  .navbar,
+  .dropdown-menu {
+    transition: all 0.3s ease;
+  }

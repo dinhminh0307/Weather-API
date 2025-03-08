@@ -1,10 +1,12 @@
-<div class="container">
-    <!-- Pass searchQuery to CurrentWeather for main display -->
-    <app-current-weather [searchQuery]="searchQuery" (weatherDetailEvent)="handleWeatherDetail($event)"></app-current-weather>
-    
-    <!-- Add a gap before the weather detail section -->
-    <div class="mt-4">
-      <app-weather-detail [detail]="weatherDetailData"></app-weather-detail>
-    </div>
+
+  <div class="min-vh-100" [ngClass]="{'dark-mode': theme === 'Dark', 'light-mode': theme === 'Light'}">
+    <div class="container">
+        <!-- Pass searchQuery to CurrentWeather for main display -->
+        <app-current-weather [searchQuery]="searchQuery" [theme]="theme" (weatherDetailEvent)="handleWeatherDetail($event)"></app-current-weather>
+        
+        <!-- Add a gap before the weather detail section -->
+        <div class="mt-4">
+          <app-weather-detail [detail]="weatherDetailData" [theme]="theme" ></app-weather-detail>
+        </div>
+      </div>
   </div>
-  

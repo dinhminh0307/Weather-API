@@ -1,2 +1,6 @@
-<app-header (searchEvent)="handleSearch($event)"></app-header>
-<app-home [searchQuery]="searchQuery"></app-home>
+<!-- app.component.html (correct) -->
+<app-header 
+  (searchEvent)="handleSearch($event)" 
+  (themeToggle)="handleTheme($event)">
+</app-header>
+<app-home [searchQuery]="searchQuery" [theme]="theme"></app-home>
