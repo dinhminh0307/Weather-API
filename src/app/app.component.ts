@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
-import { COLLECTION_PATH } from '../firebase/fire-base.operations';
 import { CityService } from './services/city.service';
 
 @Component({
@@ -13,14 +12,19 @@ import { CityService } from './services/city.service';
     HeaderComponent,
     HomeComponent
   ],
-  // Remove providers array completely
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
   title = 'weather-api';
   theme: string = 'Light';
   searchQuery: string = 'Hanoi';
+  citiesList: Array<string> = [];
+
+  // Bind a class on the host element based on the current theme.
+  @HostBinding('class') themeClass = 'light-mode';
+
+  constructor(private cityService: CityService) { }
 
   handleSearch(query: string): void {
     this.searchQuery = query;
@@ -30,5 +34,14 @@ export class AppComponent{
   handleTheme(theme: string): void {
     console.log('Theme toggled to:', theme);
     this.theme = theme;
+    // Update the host class for dark/light mode.
+    this.themeClass = theme === 'Dark' ? 'dark-mode' : 'light-mode';
+  }
+
+  ngOnInit(): void {
+    // Fetch all cities and map to city names.
+    this.cityService.getAllCities().subscribe((cities) => {
+      this.citiesList = cities.map(city => city.name);
+    });
   }
 }

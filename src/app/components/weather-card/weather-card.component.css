@@ -1,0 +1,19 @@
+.weather-card {
+    max-width: 200px;
+    margin: 0.5rem;
+  }
+  
+  /* Light mode: white background, dark text */
+  .light-mode {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* Dark mode: dark background, light text */
+  .dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* You might want to adjust font sizes or spacing for a smaller card */
+  

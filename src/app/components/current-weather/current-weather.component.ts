@@ -29,7 +29,7 @@ export class CurrentWeatherComponent implements OnInit, OnChanges {
   error = '';
 
   // Optional: store the chosen unit of measure (for future expansion)
-  temperatureUnit: 'Fahrenheit' | 'Celsius' = 'Fahrenheit';
+  temperatureUnit: 'Fahrenheit' | 'Celsius' = 'Celsius';
 
   constructor(private weatherService: WeatherService, private cityService: CityService) {}
 
