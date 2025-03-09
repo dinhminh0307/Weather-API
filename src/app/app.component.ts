@@ -1,32 +1,32 @@
-import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
-
+import { CityService } from './services/city.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    // DevExtreme modules
     HeaderComponent,
     HomeComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'weather-api';
   theme: string = 'Light';
-
-  // Default search query (e.g., initial city)
   searchQuery: string = 'Hanoi';
+  citiesList: Array<string> = [];
+
+  // Bind a class on the host element based on the current theme.
+  @HostBinding('class') themeClass = 'light-mode';
+
+  constructor(private cityService: CityService) { }
 
   handleSearch(query: string): void {
-    // Update the search query to be passed down to CurrentWeather
     this.searchQuery = query;
     console.log(this.searchQuery);
   }
@@ -34,5 +34,14 @@ export class AppComponent {
   handleTheme(theme: string): void {
     console.log('Theme toggled to:', theme);
     this.theme = theme;
+    // Update the host class for dark/light mode.
+    this.themeClass = theme === 'Dark' ? 'dark-mode' : 'light-mode';
+  }
+
+  ngOnInit(): void {
+    // Fetch all cities and map to city names.
+    this.cityService.getAllCities().subscribe((cities) => {
+      this.citiesList = cities.map(city => city.name);
+    });
   }
 }

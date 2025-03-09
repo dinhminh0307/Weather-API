@@ -1,12 +1,27 @@
-
-  <div class="min-vh-100" [ngClass]="{'dark-mode': theme === 'Dark', 'light-mode': theme === 'Light'}">
-    <div class="container">
-        <!-- Pass searchQuery to CurrentWeather for main display -->
-        <app-current-weather [searchQuery]="searchQuery" [theme]="theme" (weatherDetailEvent)="handleWeatherDetail($event)"></app-current-weather>
-        
-        <!-- Add a gap before the weather detail section -->
-        <div class="mt-4">
-          <app-weather-detail [detail]="weatherDetailData" [theme]="theme" ></app-weather-detail>
-        </div>
+<div class="container" [ngClass]="{'dark-mode': theme === 'Dark', 'light-mode': theme === 'Light'}">
+  <div class="d-flex flex-wrap">
+    <!-- Left Column: Current Weather & Detailed Weather -->
+    <div class="flex-grow-1 me-3">
+      <!-- Pass searchQuery to CurrentWeather for main display -->
+      <app-current-weather 
+        [searchQuery]="searchQuery" 
+        [theme]="theme" 
+        (weatherDetailEvent)="handleWeatherDetail($event)">
+      </app-current-weather>
+      
+      <!-- Optionally display a detailed weather block -->
+      <app-weather-detail [detail]="weatherDetailData" [theme]="theme"></app-weather-detail>
+    </div>
+    
+    <!-- Right Column: Vertical list of weather cards -->
+    <div class="d-flex flex-column" style="width: 300px;">
+      <h3>Other Cities Weather</h3>
+      <div class="d-flex flex-column">
+        <app-weather-card *ngFor="let weather of currentWeatherList"
+          [currentWeather]="weather"
+          [theme]="theme">
+        </app-weather-card>
       </div>
+    </div>
   </div>
+</div>

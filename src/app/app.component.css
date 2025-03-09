@@ -1,0 +1,16 @@
+/* Light mode (default) */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+    min-height: 100vh; /* ensure full viewport height */
+  }
+  
+  /* Dark mode */
+  .dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+    min-height: 100vh;
+  }
+  
+  /* Optionally, style links and other elements if needed */
+  

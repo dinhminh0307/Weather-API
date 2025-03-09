@@ -1,14 +1,16 @@
-/* home.component.css */
+/* Light mode: white background, dark text */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode: dark background, light text */
 .dark-mode {
-    background-color: #1a1a1a;
-    color: white !important;
-  }
-  
-  .light-mode {
-    background-color: #f8f9fa;
-    color: black !important;
-  }
-  
-  .min-vh-100 {
-    min-height: 100vh;
-  }
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Optional: adjust padding/margins for a nicer layout */
+.container {
+  padding: 1rem;
+}
