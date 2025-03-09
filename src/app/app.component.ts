@@ -1,32 +1,28 @@
-import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
-
+import { COLLECTION_PATH } from '../firebase/fire-base.operations';
+import { CityService } from './services/city.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    // DevExtreme modules
     HeaderComponent,
     HomeComponent
   ],
+  // Remove providers array completely
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'weather-api';
   theme: string = 'Light';
-
-  // Default search query (e.g., initial city)
   searchQuery: string = 'Hanoi';
 
   handleSearch(query: string): void {
-    // Update the search query to be passed down to CurrentWeather
     this.searchQuery = query;
     console.log(this.searchQuery);
   }

@@ -4,6 +4,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { CurrentWeather } from '../../models/current-weather.model';
 import { WeatherDetail } from '../../models/weather-detail.model';
 import { WeatherService } from '../../services/current-weather.service';
+import { CityService } from '../../services/city.service';
 
 @Component({
   selector: 'app-current-weather',
@@ -30,7 +31,7 @@ export class CurrentWeatherComponent implements OnInit, OnChanges {
   // Optional: store the chosen unit of measure (for future expansion)
   temperatureUnit: 'Fahrenheit' | 'Celsius' = 'Fahrenheit';
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private cityService: CityService) {}
 
   // ----------------------
   // GETTERS & SETTERS
@@ -73,6 +74,11 @@ export class CurrentWeatherComponent implements OnInit, OnChanges {
 
         // Emit the weather detail to the parent component (Home)
         this.weatherDetailEvent.emit(this.weatherDetail);
+
+        // add city to firebase:
+        this.cityService.addCity(city)
+      .then(() => console.log('Cityadded successfully'))
+      .catch(err => console.error('Error adding city:', err));
 
         this.loading = false;
       },
