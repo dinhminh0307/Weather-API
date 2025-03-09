@@ -41,5 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 .vercel
-.gitingore
+.env
 src/firebase/fire-base.config.ts
